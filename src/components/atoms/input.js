@@ -17,7 +17,7 @@ const Input = styled.input`
         border: 1px solid ${darken(0.3, '#E5E7EB')};
     }
     :disabled {
-        background-color: #000;
+        background-color: #E5E7EB;
         cursor: not-allowed;
     }
     ::placeholder {
