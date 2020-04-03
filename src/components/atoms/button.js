@@ -17,10 +17,14 @@ const Button = styled.button`
     cursor: pointer;
     :disabled {
         background-color: #E5E7EB;
+        color: #999999;
         cursor: not-allowed;
     };
     :hover {
         background-color: ${darken(0.1, '#22D089')};
+    };
+    :hover:disabled {
+        background-color: #E5E7EB;
     }
 `;
 
