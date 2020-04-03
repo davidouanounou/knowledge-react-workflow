@@ -58,6 +58,7 @@ const App = () => {
                 placeholder='Type your username'
                 disabled={queryState.fetching} 
                 onChange={e => setUsernameState(e.target.value)} 
+                data-testid='username-field'
               />
             </InputGroup>
             <InputGroup>
@@ -66,12 +67,19 @@ const App = () => {
                 placeholder='Type your password'
                 type='password'
                 disabled={queryState.fetching}
-                onChange={e => setPasswordState(e.target.value)} 
+                onChange={e => setPasswordState(e.target.value)}
+                data-testid='password-field'
               />
             </InputGroup>
           </LoginBody>
           <LoginFooter>
-            <Button disabled={!queryState.readyToFetch} onClick={e => fetchMock()}>Login</Button>
+            <Button
+              disabled={!queryState.readyToFetch}
+              onClick={e => fetchMock()}
+              data-testid='login-button'
+            >
+              Login
+            </Button>
           </LoginFooter>
         </Login>
       }
