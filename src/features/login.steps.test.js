@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect';
 
 // Component entry
-import App from '../app';
+import App from '../App';
 
 // Scenarios
 const loginFeature = loadFeature('./src/features/login.feature');
