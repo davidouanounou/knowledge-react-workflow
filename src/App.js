@@ -31,9 +31,9 @@ const App = () => {
   const [passwordState, setPasswordState] = useState(null);
 
   // Effect to check if we can activate button
-    useEffect(() => {
-      if(usernameState && passwordState) setQueryState({fetching: false, readyToFetch: true})
-    }, [usernameState, passwordState])
+  useEffect(() => {
+    if(usernameState && passwordState) setQueryState({fetching: false, readyToFetch: true})
+  }, [usernameState, passwordState])
 
   // Simulate API call
   const fetchMock = (username, password) => {
@@ -84,8 +84,8 @@ const App = () => {
         </Login>
       }
       {queryState.logged && 
-        <Content>
-          Hey you are now logged in !
+        <Content data-testid='dashboard'>
+          "Hey you are now logged in !"
         </Content>
       }
     </Main>

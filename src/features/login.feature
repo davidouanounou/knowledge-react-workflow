@@ -10,3 +10,4 @@ Scenario: User logging in
   Then username field should be disabled
   And password field should be disabled
   And loggin button should be disabled
+  And content should display "Hey you are now logged in !"

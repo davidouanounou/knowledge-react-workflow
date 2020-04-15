@@ -1,6 +1,6 @@
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, act } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect';
 
 // Component entry
@@ -10,15 +10,21 @@ import App from '../App';
 const loginFeature = loadFeature('./src/features/login.feature');
 
 defineFeature(loginFeature, test => {
+  
+  jest.useFakeTimers();
+
   test('User logging in', ({ given, when, then, and }) => {
     let getElement;
     let button;
     let username;
     let password;
+    let content;
 
     beforeEach(() => {
-      const { getByTestId } = render(<App />);
-      getElement = getByTestId;
+      act(() => {
+        const { getByTestId } = render(<App />);
+        getElement = getByTestId;
+      });
     });
 
     given(/^I am a user attempting to log into my favorite app$/, () => {
@@ -58,6 +64,15 @@ defineFeature(loginFeature, test => {
 
     and(/^loggin button should be disabled$/, () => {
       expect(button.disabled).toBe(true);
+    });
+
+    and(/^content should display ("([^\\"]|\\")*")$/, text => {
+      act(() => {
+        // jest.runOnlyPendingTimers();
+        jest.advanceTimersByTime(4000);
+      });
+      content = getElement('dashboard');
+      expect(content).toHaveTextContent(text);
     });
   });
 });
