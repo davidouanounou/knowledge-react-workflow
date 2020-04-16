@@ -1,11 +1,27 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { darken } from 'polished';
+
+const sizes = {
+    small:{
+        fontSize: '12px',
+        lineHeight: '16px',
+    },
+    medium: {
+        fontSize: '14px',
+        lineHeight: '18px',
+    },
+    large: {
+        fontSize: '16px',
+        lineHeight: '20px',
+    }
+}
 
 const Button = styled.button`
     font-family: Roboto;
     font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
+    font-size:  ${props => sizes[props.size].fontSize};
+    line-height: ${props => sizes[props.size].lineHeight};
     color: #000;
     width: 100px;
     outline: none;
@@ -27,5 +43,17 @@ const Button = styled.button`
         background-color: #E5E7EB;
     }
 `;
+
+/* Will show the right 'tag' within documentation */
+Button.displayName = 'Button';
+Button.defaultProps = {
+    size: 'medium'
+};
+
+Button.propTypes = {
+ size: PropTypes.oneOf(['small', 'medium', 'large']),
+ children: PropTypes.element.isRequired,
+ onClick: PropTypes.func.isRequired
+};
 
 export default Button;

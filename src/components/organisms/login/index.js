@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Login = styled.div`
     width: 400px;
-    height: 300px;
+    height: 332px;
     display: flex;
     align-items: center;
     justify-content: center;

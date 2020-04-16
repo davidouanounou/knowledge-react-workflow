@@ -5,7 +5,7 @@ const LoginBody = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 200px;
+    height: 232px;
     flex-direction: column;
 `;
 

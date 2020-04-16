@@ -3,37 +3,37 @@ import styled from 'styled-components';
 
 const sizes = {
     small:{
-        fontSize: '16px',
-        lineHeight: '18px',
+        fontSize: '10px',
+        lineHeight: '14px',
     },
     medium: {
-        fontSize: '20px',
-        lineHeight: '22px',
+        fontSize: '12px',
+        lineHeight: '16px',
     },
     large: {
-        fontSize: '24px',
-        lineHeight: '26px',
+        fontSize: '14px',
+        lineHeight: '18px',
     }
 }
 
-const Title = styled.label`
+const Error = styled.span`
     font-family: Roboto;
     font-weight: 900;
     font-size:  ${props => sizes[props.size].fontSize};
     line-height: ${props => sizes[props.size].lineHeight};
-    color: #172847;
+    padding-top: 8px;
+    color: red;
 `;
 
-
 /* Will show the right 'tag' within documentation */
-Title.displayName = 'Title';
-Title.defaultProps = {
+Error.displayName = 'Error';
+Error.defaultProps = {
     size: 'medium'
 };
 
-Title.propTypes = {
+Error.propTypes = {
  size: PropTypes.oneOf(['small', 'medium', 'large']),
  children: PropTypes.element.isRequired
 };
 
-export default Title;
+export default Error;

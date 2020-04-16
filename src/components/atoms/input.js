@@ -1,13 +1,32 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { darken } from 'polished';
+
+const sizes = {
+    small:{
+        fontSize: '12px',
+        lineHeight: '16px',
+        height: '18px',
+    },
+    medium: {
+        fontSize: '14px',
+        lineHeight: '18px',
+        height: '22px',
+    },
+    large: {
+        fontSize: '16px',
+        lineHeight: '20px',
+        height: '24px',
+    }
+}
 
 const Input = styled.input`
     font-family: Roboto;
     font-weight: 300;
-    font-size: 12px;
-    line-height: 16px;
+    font-size:  ${props => sizes[props.size].fontSize};
+    line-height: ${props => sizes[props.size].lineHeight};
     color: #000;
-    height: 18px;
+    height: ${props => sizes[props.size].height};
     outline: none;
     transition: all ease .4s;
     padding: 8px;
@@ -24,5 +43,18 @@ const Input = styled.input`
         color: #7C859E;
     }
 `;
+
+/* Will show the right 'tag' within documentation */
+Input.displayName = 'Input';
+Input.defaultProps = {
+    size: 'medium',
+    placeholder: 'Type here'
+};
+
+Input.propTypes = {
+ size: PropTypes.oneOf(['small', 'medium', 'large']),
+ onChange: PropTypes.func.isRequired,
+ placeholder: PropTypes.string
+};
 
 export default Input;

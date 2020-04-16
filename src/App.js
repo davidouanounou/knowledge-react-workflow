@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react';
 
 // App components
 import Main from './components/layouts/main';
-import Login from './components/layouts/login';
-import LoginHeader from './components/layouts/login-header';
-import LoginBody from './components/layouts/login-body';
-import LoginFooter from './components/layouts/login-footer';
+import Login from './components/organisms/login';
+import LoginHeader from './components/organisms/login/login-header';
+import LoginBody from './components/organisms/login/login-body';
+import LoginFooter from './components/organisms/login/login-footer';
 import Title from './components/atoms/title';
-import InputGroup from './components/atoms/input-group';
-import Label from './components/atoms/label';
-import Input from './components/atoms/input';
+import InputGroup from './components/molecules/input-group';
 import Button from './components/atoms/button';
 import Content from './components/layouts/content';
 
@@ -36,7 +34,7 @@ const App = () => {
   }, [usernameState, passwordState])
 
   // Simulate API call
-  const fetchMock = (username, password) => {
+  const fetchMock = () => {
     setQueryState({fetching: true, readyToFetch: false});
     const timeout = setTimeout(() => {
       setQueryState({fetching: false, readyToFetch: false, logged: true});
@@ -49,28 +47,24 @@ const App = () => {
       {!queryState.logged && 
         <Login>
           <LoginHeader>
-            <Title>Please, log in !</Title>
+            <Title size='large'><span>Please, log in !</span></Title>
           </LoginHeader>
           <LoginBody>
-            <InputGroup>
-              <Label>Username</Label>
-              <Input
-                placeholder='Type your username'
-                disabled={queryState.fetching} 
-                onChange={e => setUsernameState(e.target.value)} 
-                data-testid='username-field'
-              />
-            </InputGroup>
-            <InputGroup>
-              <Label>Password</Label>
-              <Input 
-                placeholder='Type your password'
-                type='password'
-                disabled={queryState.fetching}
-                onChange={e => setPasswordState(e.target.value)}
-                data-testid='password-field'
-              />
-            </InputGroup>
+            <InputGroup 
+              label='username'
+              error={!queryState.readyToFetch}
+              onChange={e => setUsernameState(e.target.value)}
+              disabled={queryState.fetching}
+              testid='username-field'
+            />
+            <InputGroup 
+              label='password'
+              error={!queryState.readyToFetch}
+              type='password'
+              onChange={e => setPasswordState(e.target.value)}
+              disabled={queryState.fetching}
+              testid='password-field'
+            />
           </LoginBody>
           <LoginFooter>
             <Button
@@ -78,7 +72,7 @@ const App = () => {
               onClick={e => fetchMock()}
               data-testid='login-button'
             >
-              Login
+              <span>Login</span>
             </Button>
           </LoginFooter>
         </Login>
