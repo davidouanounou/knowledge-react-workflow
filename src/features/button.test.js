@@ -14,7 +14,16 @@ describe('Renders Button component', () => {
     });
 
     test('with default behavior', () => {
-      const { container, getByTestId } = render(<Medium onClick={spy} />);
+      const { container, getByTestId } = render(<Default onClick={spy} />);
+      expect(container).toBeTruthy();
+      const button = getByTestId('default-button')
+      expect(button).toHaveStyleRule('font-size', '14px');
+      button.click();
+      expect(spy).toHaveBeenCalled();
+    });
+
+    test('with a medium size', () => {
+    const { container, getByTestId } = render(<Medium onClick={spy} />);
       expect(container).toBeTruthy();
       const button = getByTestId('medium-button')
       expect(button).toHaveStyleRule('font-size', '14px');

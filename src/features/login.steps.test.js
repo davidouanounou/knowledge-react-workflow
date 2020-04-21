@@ -13,7 +13,7 @@ defineFeature(loginFeature, test => {
   
   jest.useFakeTimers();
 
-  xtest('User logging in', ({ given, when, then, and }) => {
+  test('User logging in', ({ given, when, then, and }) => {
     let getElement;
     let button;
     let username;
