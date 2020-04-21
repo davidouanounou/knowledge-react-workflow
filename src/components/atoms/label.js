@@ -1,3 +1,4 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -16,7 +17,7 @@ const sizes = {
     }
 }
 
-const Label = styled.label`
+const StyledLabel = styled.label`
     font-family: Roboto;
     font-weight: 400;
     font-size:  ${props => sizes[props.size].fontSize};
@@ -24,6 +25,12 @@ const Label = styled.label`
     text-transform: uppercase;
     padding-bottom: 8px;
 `;
+
+const Label = ({size, children, testid}) => {
+    return(
+        <StyledLabel size={size} data-testid={testid}>{children}</StyledLabel>
+    )
+}
 
 /* Will show the right 'tag' within documentation */
 Label.displayName = 'Label';
