@@ -10,6 +10,7 @@ import Title from './components/atoms/title';
 import InputGroup from './components/molecules/input-group';
 import Button from './components/atoms/button';
 import Content from './components/layouts/content';
+import NewButton from "./components/atoms/NewButton";
 
 const App = () => {
 
@@ -44,44 +45,8 @@ const App = () => {
 
   return (
     <Main>
-      {!queryState.logged && 
-        <Login>
-          <LoginHeader>
-            <Title size='large'><span>Please, log in !</span></Title>
-          </LoginHeader>
-          <LoginBody>
-            <InputGroup 
-              label='username'
-              error={!queryState.readyToFetch}
-              onChange={e => setUsernameState(e.target.value)}
-              disabled={queryState.fetching}
-              testid='username-field'
-            />
-            <InputGroup 
-              label='password'
-              error={!queryState.readyToFetch}
-              type='password'
-              onChange={e => setPasswordState(e.target.value)}
-              disabled={queryState.fetching}
-              testid='password-field'
-            />
-          </LoginBody>
-          <LoginFooter>
-            <Button
-              disabled={!queryState.readyToFetch}
-              onClick={e => fetchMock()}
-              data-testid='login-button'
-            >
-              <span>Login</span>
-            </Button>
-          </LoginFooter>
-        </Login>
-      }
-      {queryState.logged && 
-        <Content data-testid='dashboard'>
-          "Hey you are now logged in !"
-        </Content>
-      }
+      <NewButton>Mon btn</NewButton>
+
     </Main>
   );
 }
